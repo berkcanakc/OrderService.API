@@ -19,6 +19,14 @@ namespace OrderService.Persistence.Contexts
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrderDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<OrderItem>()
+                .Property(o => o.Price)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<OrderItem>()
+                .Property(o => o.TotalPrice)
+                .HasPrecision(18, 2);
         }
     }
 }

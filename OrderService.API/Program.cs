@@ -1,5 +1,7 @@
 using OrderService.Application.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using OrderService.Infrastructure.DependencyInjection;
+using OrderService.Persistence.DependencyInjection;
 
 
 
@@ -7,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplicationServices();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

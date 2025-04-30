@@ -11,7 +11,6 @@ namespace OrderService.Persistence.EntityConfigurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.UserId).IsRequired();
-            builder.Property(x => x.TotalPrice).IsRequired().HasColumnType("decimal(18,2)");
             builder.Property(x => x.CreatedAt).IsRequired();
             builder.Property(x => x.Status).IsRequired();
 

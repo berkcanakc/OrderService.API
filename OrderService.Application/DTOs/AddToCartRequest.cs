@@ -1,13 +1,11 @@
-﻿namespace OrderService.Domain.Entities
+﻿namespace OrderService.Application.DTOs
 {
-    public class OrderItem
+    public class AddToCartRequest
     {
-        public Guid Id { get; set; }
-        public Guid OrderId { get; set; }
+        public int UserId { get; set; }
         public int CardId { get; set; }
         public string CardName { get; set; } = string.Empty;
         public int Quantity { get; set; }
         public decimal Price { get; set; }
-        public decimal TotalPrice { get; set; }
     }
 }
