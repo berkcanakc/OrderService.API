@@ -7,5 +7,6 @@ namespace OrderService.Application.Interfaces
         Task<Cart?> GetCartByUserIdAsync(int userId);
         Task SaveCartAsync(Cart cart);
         Task DeleteCartAsync(Guid cartId);
+        Task<List<Cart>> GetExpiredCartsAsync(TimeSpan expiration);
     }
 }

@@ -10,6 +10,7 @@ namespace OrderService.Application.Interfaces
     public interface IOrderRepository
     {
         Task CreateOrderAsync(Order order);
+        Task<List<Order>> GetOrdersByUserIdAsync(int userId);
 
     }
 }

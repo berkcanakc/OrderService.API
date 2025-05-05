@@ -21,5 +21,12 @@ namespace OrderService.API.Controllers
             await _orderService.CheckoutAsync(request);
             return Ok("Sipariş oluşturuldu.");
         }
+
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetOrdersByUserId(int userId)
+        {
+            var orders = await _orderService.GetOrdersByUserIdAsync(userId);
+            return Ok(orders);
+        }
     }
 }

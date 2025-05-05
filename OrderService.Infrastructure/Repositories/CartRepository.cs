@@ -56,5 +56,15 @@ namespace OrderService.Infrastructure.Repositories
             }
         }
 
+        public async Task<List<Cart>> GetExpiredCartsAsync(TimeSpan expiration)
+        {
+            var threshold = DateTime.UtcNow - expiration;
+
+            return await _context.Carts
+                .Include(c => c.Items)
+                .Where(c => c.UpdatedAt < threshold)
+                .ToListAsync();
+        }
+
     }
 }

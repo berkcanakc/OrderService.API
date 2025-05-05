@@ -25,5 +25,15 @@ namespace OrderService.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<List<Order>> GetOrdersByUserIdAsync(int userId)
+        {
+            return await _context.Orders
+                .Include(o => o.Items)
+                .Where(o => o.UserId == userId)
+                .OrderByDescending(o => o.CreatedAt)
+                .ToListAsync();
+        }
+
+
     }
 }

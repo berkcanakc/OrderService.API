@@ -10,6 +10,6 @@ namespace OrderService.Application.Interfaces
     public interface IOrderService
     {
         Task CheckoutAsync(CheckoutRequest request);
-
+        Task<List<OrderDto>> GetOrdersByUserIdAsync(int userId);
     }
 }
