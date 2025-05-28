@@ -33,7 +33,12 @@ namespace OrderService.Infrastructure.Repositories
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
         }
-
+        public async Task<Order?> GetByIdAsync(Guid orderId)
+        {
+            return await _context.Orders
+                .Include(o => o.Items)
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+        }
 
     }
 }

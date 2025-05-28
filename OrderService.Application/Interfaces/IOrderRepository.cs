@@ -11,6 +11,6 @@ namespace OrderService.Application.Interfaces
     {
         Task CreateOrderAsync(Order order);
         Task<List<Order>> GetOrdersByUserIdAsync(int userId);
-
+        Task<Order?> GetByIdAsync(Guid orderId);
     }
 }

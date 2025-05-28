@@ -67,5 +67,33 @@ namespace OrderService.Application.Services
             }).ToList();
         }
 
+        public async Task<OrderDto?> GetOrderByIdAsync(Guid orderId)
+        {
+            var order = await _orderRepository.GetByIdAsync(orderId);
+
+            if (order == null)
+                return null;
+
+            return new OrderDto
+            {
+                Id = order.Id,
+                UserId = order.UserId,
+                CreatedAt = order.CreatedAt,
+                Status = order.Status.ToString(),
+                Items = order.Items.Select(i => new OrderItemDto
+                {
+                    CardId = i.CardId,
+                    CardName = i.CardName,
+                    Price = i.Price,
+                    Quantity = i.Quantity,
+                    TotalPrice = i.Price * i.Quantity
+                }).ToList()
+            };
+        }
+        public async Task CreateOrderAsync(Order order)
+        {
+            await _orderRepository.CreateOrderAsync(order);
+        }
+
     }
 }

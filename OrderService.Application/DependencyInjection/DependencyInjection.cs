@@ -11,7 +11,7 @@ namespace OrderService.Application.DependencyInjection
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<ICartService, CartService>();
-            //services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderService, Services.OrderService>();
             //services.AddScoped<IOrderStatusHistoryService, OrderStatusHistoryService>();
 
             return services;

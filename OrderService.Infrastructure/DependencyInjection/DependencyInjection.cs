@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OrderService.Application.Interfaces;
 using OrderService.Infrastructure.BackgroundJobs;
 using OrderService.Infrastructure.Repositories;
+using OrderService.Infrastructure.Services;
 //using OrderService.Application.Interfaces;
 //using OrderService.Infrastructure.External;
 //using OrderService.Infrastructure.Repositories;
@@ -15,8 +16,9 @@ namespace OrderService.Infrastructure.DependencyInjection
         {
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddHostedService<CartCleanupService>();
-            //services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             //services.AddScoped<IStockClientService, StockApiClient>();
+            services.AddHttpClient<IStockClientService, StockApiClient>();
             // İleride: Retry policies eklenebilir.
 
             return services;
